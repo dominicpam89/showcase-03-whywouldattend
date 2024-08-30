@@ -4,11 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { EventType } from "@/lib/dummy.data";
 import { Button } from "@/components/ui/button";
+import { transformDate } from "@/lib/utils";
+import { CalendarDaysIcon } from "lucide-react";
 
 interface Props {
 	event: EventType;
 }
 export default function EventItem({ event }: Props) {
+	const date = transformDate(event.date);
+	console.log(date);
 	return (
 		<CardContainer aria-label="event-item-container" className="inter-var">
 			<CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-10 border">
@@ -24,6 +28,14 @@ export default function EventItem({ event }: Props) {
 					className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
 				>
 					{event.location}
+				</CardItem>
+				<CardItem
+					translateZ={50}
+					translateX={10}
+					className="text-neutral-500 max-w-sm mt-2 dark:text-neutral-300 flex gap-3 items-center"
+				>
+					<CalendarDaysIcon className="size-4" />
+					<h4>{date}</h4>
 				</CardItem>
 				<CardItem translateZ="150" className="w-full mt-4">
 					<Image
