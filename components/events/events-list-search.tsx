@@ -13,7 +13,7 @@ import { Search } from "lucide-react";
 export default function EventsListSearch() {
 	const { years, months } = getEventsYearsAndMonths();
 	return (
-		<div aria-label="events-search" className="px-8 lg:px-16 flex gap-2">
+		<form aria-label="events-search" className="px-8 lg:px-16 flex gap-2">
 			<Select key="years">
 				<SelectTrigger className="w-[180px]">
 					<SelectValue placeholder="Select Year" />
@@ -41,6 +41,6 @@ export default function EventsListSearch() {
 			<Button>
 				<Search className="mr-2 h-4 w-4" /> Search
 			</Button>
-		</div>
+		</form>
 	);
 }
