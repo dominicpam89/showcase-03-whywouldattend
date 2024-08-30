@@ -53,7 +53,7 @@ const poppins = Poppins({
 });
 export const styleClassesInjection = `bg-background text-foreground font-sans ${poppins.variable}`;
 
-export const months = [
+export const monthNames = [
 	"January",
 	"February",
 	"March",
@@ -67,3 +67,7 @@ export const months = [
 	"November",
 	"December",
 ];
+
+export const transformMonthArrayNumberToString = (months: number[]) => {
+	return months.map((month) => monthNames[month - 1]);
+};

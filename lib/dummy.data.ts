@@ -1,3 +1,5 @@
+import { convertDateString, transformMonthArrayNumberToString } from "./utils";
+
 const location = {
 	city: "Somewhere in Heaven",
 	province: "Olympus the Home of the Gods",
@@ -143,6 +145,22 @@ export function getFeaturedEvents() {
 
 export function getAllEvents() {
 	return DUMMY_EVENTS;
+}
+
+export function getEventsYearsAndMonths() {
+	const events = DUMMY_EVENTS;
+	const dates = events.map((event) => {
+		const year = new Date(event.date).getFullYear();
+		const month = new Date(event.date).getMonth() + 1;
+		return { year, month };
+	});
+	const yearsSet = new Set(dates.map((date) => date.year));
+	const years = Array.from(yearsSet);
+
+	const monthNums = dates.map((date) => date.month).sort((a, b) => a - b);
+	const monthsArray = Array.from(new Set(monthNums));
+	const months = transformMonthArrayNumberToString(monthsArray);
+	return { years, months };
 }
 
 export function getFilteredEvents(dateFilter: { year: number; month: number }) {
