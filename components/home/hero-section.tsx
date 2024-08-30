@@ -1,9 +1,8 @@
-// import { BGShapeCircle } from "@/components/bg-shape-circle";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { FC } from "react";
 import Link from "next/link";
 import { Compare } from "@/components/ui/compare";
+import WordPullUp from "@/components/ui-awesome/word-pull-up";
 
 export const HeroSection: FC = () => {
 	return (
@@ -11,9 +10,11 @@ export const HeroSection: FC = () => {
 			<div className="absolute bg-[url('/_convertfast/gradient-bg-0.svg')] bg-auto bg-no-repeat z-0 inset-0 top-0 bottom-0 left-0 right-0 grayscale"></div>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 relative z-10">
 				<div className="max-w-3xl">
-					<h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6 drop-shadow-md">
-						Yes yes yes, everybody needs landing page. So here is mine.
-					</h1>
+					<WordPullUp
+						// className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem]"
+						className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.02em] text-primary mb-6 drop-shadow-md text-left"
+						words="Yes yes yes, everybody needs landing page. So here is mine."
+					/>
 					<p className="text-lg lg:text-xl text-muted-foreground mb-8">
 						Well, it doesn&lsquo;t matter how beautiful my website is. For
 						what matter is, how deep i understand javascript engine,
