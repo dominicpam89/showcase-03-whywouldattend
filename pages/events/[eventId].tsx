@@ -7,9 +7,5 @@ export default function Page() {
 	const eventId = router.query.eventId as string;
 	const event = getEventById(eventId);
 	if (!event) return <p>No event found!</p>;
-	return (
-		<section id="event-detail">
-			<EventItem event={event} />
-		</section>
-	);
+	return <EventItem event={event} />;
 }
