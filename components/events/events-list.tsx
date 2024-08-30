@@ -8,7 +8,7 @@ interface Props {
 }
 export default function EventsList({ events }: Props) {
 	return (
-		<div aria-label="list-container" className="flex flex-col gap-4">
+		<div aria-label="list-container" className="flex flex-col gap-6">
 			<EventsListHeading />
 			<EventsListSearch />
 			<div

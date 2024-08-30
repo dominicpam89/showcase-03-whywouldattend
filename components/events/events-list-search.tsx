@@ -7,6 +7,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 
 export default function EventsListSearch() {
 	const { years, months } = getEventsYearsAndMonths();
@@ -36,6 +38,9 @@ export default function EventsListSearch() {
 					))}
 				</SelectContent>
 			</Select>
+			<Button>
+				<Search className="mr-2 h-4 w-4" /> Search
+			</Button>
 		</div>
 	);
 }
