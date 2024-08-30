@@ -10,26 +10,29 @@ import {
 
 export default function EventsListSearch() {
 	const { years, months } = getEventsYearsAndMonths();
-
 	return (
 		<div aria-label="events-search" className="px-8 lg:px-16 flex gap-2">
-			<Select>
+			<Select key="years">
 				<SelectTrigger className="w-[180px]">
 					<SelectValue placeholder="Select Year" />
 				</SelectTrigger>
 				<SelectContent>
 					{years.map((year) => (
-						<SelectItem value={year}>{year}</SelectItem>
+						<SelectItem key={year} value={year.toString()}>
+							{year}
+						</SelectItem>
 					))}
 				</SelectContent>
 			</Select>
-			<Select>
+			<Select key="months">
 				<SelectTrigger className="w-[180px]">
 					<SelectValue placeholder="Select Month" />
 				</SelectTrigger>
 				<SelectContent>
 					{months.map((month) => (
-						<SelectItem value={month}>{month}</SelectItem>
+						<SelectItem key={month} value={month}>
+							{month}
+						</SelectItem>
 					))}
 				</SelectContent>
 			</Select>
