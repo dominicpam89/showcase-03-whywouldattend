@@ -9,7 +9,7 @@ export default function EventsListHeading() {
 				<div className="text-5xl">
 					<FlipWords words={words} duration={500} /> <br />
 				</div>
-				<span>events which i know it's not useful for you!</span>
+				<span>events which i know it is not useful for you!</span>
 			</div>
 		</div>
 	);

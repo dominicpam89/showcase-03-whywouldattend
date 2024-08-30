@@ -18,7 +18,7 @@ export default function ItemContentLocation() {
 					Event Location
 				</CardTitle>
 				<CardDescription className="tracking-wide text-lg font-light">
-					You should come if you're not that lazy
+					You should come if you are not that lazy
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-6">
