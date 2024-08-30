@@ -1,3 +1,4 @@
+import React from "react";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { useContextEvent } from "@/lib/context/event.context.hook";
 import { motion } from "framer-motion";
@@ -5,7 +6,7 @@ import { motion } from "framer-motion";
 export default function ItemHeaderText() {
 	const { event } = useContextEvent();
 	return (
-		<HeroHighlight>
+		<HeroHighlight className="p-12">
 			<motion.h1
 				initial={{
 					opacity: 0,
@@ -19,10 +20,10 @@ export default function ItemHeaderText() {
 					duration: 0.5,
 					ease: [0.4, 0.0, 0.2, 1],
 				}}
-				className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+				className="text-lg px-4 md:text-2xl lg:text-3xl font-bold text-neutral-500 dark:text-neutral-700 max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
 			>
-				{event.description}
-				<Highlight className="text-black dark:text-white">
+				{event.subtitle}
+				<Highlight className="text-black dark:text-white text-2xl lg:text-5xl">
 					{event.title}
 				</Highlight>
 			</motion.h1>

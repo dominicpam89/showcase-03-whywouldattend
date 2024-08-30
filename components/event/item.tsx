@@ -8,7 +8,10 @@ interface Props {
 }
 export default function EventItem({ event }: Props) {
 	return (
-		<section id="event-detail-container" className="p-12">
+		<section
+			id="event-detail-container"
+			className="flex flex-col gap-12 pb-12"
+		>
 			<ContextEventProvider event={event}>
 				<ItemHeader />
 				<ItemContent />

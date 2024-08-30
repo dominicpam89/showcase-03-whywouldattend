@@ -11,7 +11,7 @@ export default function EventsList({ events }: Props) {
 			<EventsListHeading />
 			<div
 				aria-label="events-list-container"
-				className="grid grid-cols-1 lg:grid-cols-3 gap-4"
+				className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
 			>
 				{events.map((event) => {
 					return <EventItem key={event.id} event={event} />;
