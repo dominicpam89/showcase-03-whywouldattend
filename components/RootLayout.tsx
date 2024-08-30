@@ -10,7 +10,7 @@ const poppins = Poppins({
 export default function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<main
-			className={`p-4 min-h-screen bg-background font-sans antialiased ${poppins.variable}`}
+			className={`min-h-screen bg-background font-sans antialiased ${poppins.variable}`}
 		>
 			{children}
 		</main>
