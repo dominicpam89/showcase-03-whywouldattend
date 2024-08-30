@@ -1,12 +1,17 @@
 import Navbar from "./navbar/Navbar";
 import Footer from "./navbar/Footer";
 import { PropsWithChildren } from "react";
+import { styleClassesInjection } from "@/lib/utils";
 
 export default function Layout({ children }: PropsWithChildren) {
 	return (
 		<>
-			<Navbar />
-			{children}
+			<header className={`${styleClassesInjection}`}>
+				<Navbar />
+			</header>
+			<main className={`min-h-screen antialiased ${styleClassesInjection}`}>
+				{children}
+			</main>
 			<Footer />
 		</>
 	);

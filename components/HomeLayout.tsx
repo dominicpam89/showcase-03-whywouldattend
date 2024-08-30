@@ -7,7 +7,7 @@ const poppins = Poppins({
 	variable: "--font-sans",
 });
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function HomeLayout({ children }: PropsWithChildren) {
 	return (
 		<main
 			className={`min-h-screen bg-background font-sans antialiased ${poppins.variable}`}
