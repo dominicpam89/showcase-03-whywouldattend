@@ -14,3 +14,33 @@ export function transformDate(dateString: string) {
 		return transformer.format(date);
 	} else throw new Error("The input date is not Date object");
 }
+
+export function convertDateString(dateString: string): {
+	year: string;
+	month: string;
+	date: number;
+	day: string;
+} {
+	const dateObj = new Date(dateString);
+
+	const options: Intl.DateTimeFormatOptions = {
+		year: "numeric",
+		month: "long",
+		day: "2-digit",
+		weekday: "long",
+	};
+
+	const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+		dateObj
+	);
+
+	const [dayRaw, month, date, year] = formattedDate.split(" ");
+	const day = dayRaw.split(",")[0];
+	return {
+		year,
+		month,
+		date: parseInt(date.replace(",", "")),
+		day,
+	};
+}
+export type DateConciseType = ReturnType<typeof convertDateString>;
