@@ -17,7 +17,7 @@ const DUMMY_EVENTS = [
 			province: "Olympus the Home of the Gods",
 			zipCode: "12345",
 		},
-		date: "2021-05-12",
+		date: "2024-05-12",
 		image: "/images/event001.jpg",
 		isFeatured: false,
 	},
@@ -33,7 +33,7 @@ const DUMMY_EVENTS = [
 			province: "Antarctic Monkeys Province",
 			zipCode: "99887",
 		},
-		date: "2021-05-30",
+		date: "2024-05-30",
 		image: "/images/event002.jpg",
 		isFeatured: true,
 	},
@@ -49,8 +49,88 @@ const DUMMY_EVENTS = [
 			province: "The Why, What, and Where Province",
 			zipCode: "33447",
 		},
-		date: "2022-04-10",
+		date: "2024-04-10",
 		image: "/images/event003.jpg",
+		isFeatured: true,
+	},
+	{
+		id: "e4",
+		title: "Advanced JavaScript",
+		subtitle:
+			"Take your JavaScript skills to the next level with this advanced workshop. Learn the latest features and best practices in the industry.",
+		description:
+			"This event is designed for developers who have a solid foundation in JavaScript and want to deepen their knowledge. We will explore advanced concepts, including closures, async/await, and modern JavaScript patterns, to help you write more efficient and maintainable code.",
+		location: {
+			city: "Tech Valley",
+			province: "Innovation Hub Province",
+			zipCode: "45678",
+		},
+		date: "2023-11-20",
+		image: "/images/event004.jpg",
+		isFeatured: false,
+	},
+	{
+		id: "e5",
+		title: "AI in Healthcare",
+		subtitle:
+			"Discover the impact of artificial intelligence on the healthcare industry. Learn about the latest AI-driven technologies that are transforming patient care.",
+		description:
+			"This event will cover the latest advancements in AI within the healthcare sector. From predictive analytics to AI-driven diagnostics, you'll gain insights into how these technologies are being applied to improve patient outcomes and streamline healthcare processes.",
+		location: {
+			city: "Med City",
+			province: "HealthTech Province",
+			zipCode: "54321",
+		},
+		date: "2024-03-15",
+		image: "/images/event005.jpg",
+		isFeatured: true,
+	},
+	{
+		id: "e6",
+		title: "Sustainable Living",
+		subtitle:
+			"Join us for a discussion on sustainable living practices that can help reduce your carbon footprint and create a more eco-friendly lifestyle.",
+		description:
+			"This event will explore practical steps you can take to live a more sustainable life. Topics include reducing waste, choosing sustainable products, and understanding the environmental impact of your daily choices. You'll leave with actionable tips to make a positive difference.",
+		location: {
+			city: "Green Town",
+			province: "Eco Friendly Province",
+			zipCode: "67890",
+		},
+		date: "2023-12-05",
+		image: "/images/event006.jpg",
+		isFeatured: false,
+	},
+	{
+		id: "e7",
+		title: "Cryptocurrency Basics",
+		subtitle:
+			"An introductory event for those who are new to the world of cryptocurrency. Learn the fundamentals and how to get started.",
+		description:
+			"This event is perfect for beginners who are curious about cryptocurrency. We will cover the basics of how cryptocurrencies work, how to buy and store them, and what you need to know to get started safely. You'll gain a solid understanding of the risks and opportunities in this emerging field.",
+		location: {
+			city: "Coin City",
+			province: "Blockchain Valley Province",
+			zipCode: "98765",
+		},
+		date: "2023-09-18",
+		image: "/images/event007.jpg",
+		isFeatured: false,
+	},
+	{
+		id: "e8",
+		title: "Startup Funding 101",
+		subtitle:
+			"Learn the essentials of raising capital for your startup. From pitching to investors to understanding different funding options, we've got you covered.",
+		description:
+			"This event is designed for entrepreneurs who are looking to raise capital for their startups. We will discuss the different types of funding available, how to prepare a winning pitch, and what investors are looking for in a startup. Whether you're in the early stages or looking to scale, this event will provide valuable insights.",
+		location: {
+			city: "Startup City",
+			province: "Venture Capital Province",
+			zipCode: "11223",
+		},
+		date: "2024-07-10",
+		image: "/images/event008.jpg",
 		isFeatured: true,
 	},
 ];

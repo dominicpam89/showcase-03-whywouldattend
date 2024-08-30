@@ -52,3 +52,18 @@ const poppins = Poppins({
 	variable: "--font-sans",
 });
 export const styleClassesInjection = `bg-background text-foreground font-sans ${poppins.variable}`;
+
+export const months = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+];
