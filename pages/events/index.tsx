@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+import EventsList from "@/components/events/events-list";
+import { getAllEvents } from "@/lib/dummy.data";
 
 export default function Page() {
+	const events = getAllEvents();
 	return (
-		<div>
-			<h1>Show all events</h1>
-			<Button>Test ShadCN button</Button>
-		</div>
+		<section id="events">
+			<EventsList events={events} />
+		</section>
 	);
 }
