@@ -1,11 +1,9 @@
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import { EventType } from "@/lib/dummy.data";
+import { useContextEvent } from "@/lib/context/event.context.hook";
 import { motion } from "framer-motion";
 
-interface Props {
-	event: EventType;
-}
-export default function ItemHeaderText({ event }: Props) {
+export default function ItemHeaderText() {
+	const { event } = useContextEvent();
 	return (
 		<HeroHighlight>
 			<motion.h1

@@ -1,10 +1,8 @@
-import { EventType } from "@/lib/dummy.data";
+import { useContextEvent } from "@/lib/context/event.context.hook";
 import Image from "next/image";
 
-interface Props {
-	event: EventType;
-}
-export default function ItemHeaderImage({ event }: Props) {
+export default function ItemHeaderImage() {
+	const { event } = useContextEvent();
 	return (
 		<div aria-label="image-container" className="relative w-full h-[50vh]">
 			<Image
