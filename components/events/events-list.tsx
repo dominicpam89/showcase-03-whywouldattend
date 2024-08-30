@@ -1,5 +1,5 @@
 import { EventType } from "@/lib/dummy.data";
-import EventItem from "./event-item";
+import EventItem from "./events-list-item";
 import EventsListHeading from "./events-list-heading";
 
 interface Props {
