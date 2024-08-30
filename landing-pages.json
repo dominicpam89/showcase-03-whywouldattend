@@ -1,0 +1,8 @@
+{
+  "nextjs": {
+    "router": "pages"
+  },
+  "components": {
+    "path": "components.json"
+  }
+}
