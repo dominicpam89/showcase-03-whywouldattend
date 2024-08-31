@@ -37,12 +37,12 @@ export default function EventsListSearch() {
 		<FormProvider {...methods}>
 			<form
 				aria-label="events-search"
-				className="px-8 lg:px-16 flex flex-col gap-5"
+				className="px-8 lg:px-16 flex flex-col gap-5 lg:flex-row lg:items-center"
 				onSubmit={methods.handleSubmit(onValid)}
 			>
 				<div
 					aria-label="form-fields"
-					className="w-full flex flex-col gap-2"
+					className="w-full flex flex-col gap-2 md:flex-row"
 				>
 					<Controller
 						control={methods.control}

@@ -41,7 +41,7 @@ export default function EventsList({ events }: Props) {
 				initial={"hidden"}
 				animate={"visible"}
 				aria-label="events-list-container"
-				className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+				className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center"
 			>
 				<AnimatePresence>
 					{events.map((event) => (

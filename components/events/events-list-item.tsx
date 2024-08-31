@@ -8,9 +8,12 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface Props {
@@ -22,17 +25,13 @@ export default function EventItem({ event }: Props) {
 	return (
 		<motion.div
 			whileHover={{
-				zoom: 1.05,
+				zoom: 1.03,
 				boxShadow: "0.25rem 0.25rem 0.5rem 0.25rem hsl(var(--accent))",
-			}}
-			whileTap={{
-				scale: 0.97,
 			}}
 			initial={{ y: 50, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			aria-label="motion-card-wrapper"
-			className="w-full cursor-pointer"
-			onClick={() => router.push(`/events/${event.id}`)}
+			className="w-full hover:cursor-auto"
 		>
 			<Card
 				aria-label="event-list-item"
@@ -55,6 +54,11 @@ export default function EventItem({ event }: Props) {
 						alt="thumbnail"
 					/>
 				</CardContent>
+				<CardFooter>
+					<Button asChild className="w-full" variant="outline">
+						<Link href={`events/${event.id}`}>Check the details</Link>
+					</Button>
+				</CardFooter>
 			</Card>
 		</motion.div>
 	);
