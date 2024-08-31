@@ -23,7 +23,7 @@ export default function ItemHeaderText() {
 				className="text-lg px-4 md:text-2xl lg:text-3xl font-bold text-neutral-500 dark:text-neutral-700 max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
 			>
 				{event.subtitle}
-				<Highlight className="text-black dark:text-white text-2xl lg:text-5xl">
+				<Highlight className="text-neutral-800 dark:text-neutral-100 text-2xl lg:text-5xl">
 					{event.title}
 				</Highlight>
 			</motion.h1>

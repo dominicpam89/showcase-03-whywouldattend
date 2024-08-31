@@ -22,9 +22,15 @@ export default function EventItem({ event }: Props) {
 	return (
 		<motion.div
 			whileHover={{
-				zoom: 0.8,
+				zoom: 1.05,
+				boxShadow: "0.25rem 0.25rem 0.5rem 0.25rem hsl(var(--accent))",
 			}}
-			aria-label="motion-wrapper"
+			whileTap={{
+				scale: 0.97,
+			}}
+			initial={{ y: 50, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			aria-label="motion-card-wrapper"
 			className="w-full cursor-pointer"
 			onClick={() => router.push(`/events/${event.id}`)}
 		>
