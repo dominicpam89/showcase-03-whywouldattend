@@ -21,6 +21,7 @@ export default function SearchSelect<
 			key="years"
 			onValueChange={field.onChange}
 			defaultValue={field.value}
+			value={field.value}
 		>
 			<SelectTrigger className="w-full">
 				<SelectValue placeholder={placeholder} />

@@ -43,7 +43,7 @@ export default function EventsList({ events }: Props) {
 				aria-label="events-list-container"
 				className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
 			>
-				<AnimatePresence mode="wait">
+				<AnimatePresence>
 					{events.map((event) => (
 						<motion.div
 							key={event.id}

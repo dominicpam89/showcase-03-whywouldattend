@@ -29,16 +29,21 @@ export default function EventsListSearch() {
 		router.push(`/events?year=${data.year}&month=${data.month}`);
 	};
 	const onClear = () => {
+		methods.resetField("year", { defaultValue: "" });
+		methods.resetField("month", { defaultValue: "" });
 		router.push("/events");
 	};
 	return (
 		<FormProvider {...methods}>
 			<form
 				aria-label="events-search"
-				className="px-8 lg:px-16 flex flex-col gap-4 lg:flex-row lg:gap-2 items-center"
+				className="px-8 lg:px-16 flex flex-col gap-5"
 				onSubmit={methods.handleSubmit(onValid)}
 			>
-				<div aria-label="form-fields" className="w-full flex gap-2">
+				<div
+					aria-label="form-fields"
+					className="w-full flex flex-col gap-2"
+				>
 					<Controller
 						control={methods.control}
 						name="year"
