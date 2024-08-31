@@ -6,8 +6,8 @@ interface Props {
 export default function SearchErrorUI({ message }: Props) {
 	return (
 		<motion.p
-			initial={{ x: -15, opacity: 0 }}
-			animate={{ x: 0, opacity: 1 }}
+			initial={{ x: -35, opacity: 0 }}
+			animate={{ x: 5, opacity: 1 }}
 			className="text-destructive"
 		>
 			{message}

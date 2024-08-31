@@ -2,7 +2,7 @@ import { EventType } from "@/lib/dummy.data";
 import EventItem from "./events-list-item";
 import EventsListHeading from "./events-list-heading";
 import EventsListSearch from "./events-list-search";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 
 interface Props {
 	events: EventType[];
@@ -43,16 +43,18 @@ export default function EventsList({ events }: Props) {
 				aria-label="events-list-container"
 				className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
 			>
-				{events.map((event) => (
-					<motion.div
-						key={event.id}
-						variants={eventsListItemVariants}
-						aria-label="motion-card-wrapper"
-						className="w-full cursor-pointer"
-					>
-						<EventItem event={event} />
-					</motion.div>
-				))}
+				<AnimatePresence mode="wait">
+					{events.map((event) => (
+						<motion.div
+							key={event.id}
+							variants={eventsListItemVariants}
+							aria-label="motion-card-wrapper"
+							className="w-full cursor-pointer"
+						>
+							<EventItem event={event} />
+						</motion.div>
+					))}
+				</AnimatePresence>
 			</motion.div>
 		</div>
 	);
