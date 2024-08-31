@@ -73,19 +73,17 @@ export const CardContainer = ({
 	);
 };
 
-export const CardBody = ({
-	children,
-	className,
-}: {
+interface CardBodyProps extends React.HTMLAttributes<HTMLDivElement> {
 	children: React.ReactNode;
-	className?: string;
-}) => {
+}
+export const CardBody = ({ children, className, ...props }: CardBodyProps) => {
 	return (
 		<div
 			className={cn(
 				"h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
 				className
 			)}
+			{...props}
 		>
 			{children}
 		</div>
