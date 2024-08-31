@@ -34,7 +34,10 @@ export default function EventItem({ event }: Props) {
 			className="w-full cursor-pointer"
 			onClick={() => router.push(`/events/${event.id}`)}
 		>
-			<Card aria-label="event-list-item" className="w-full p-4">
+			<Card
+				aria-label="event-list-item"
+				className="w-full p-0 md:p-6 lg:p-4 xl:p-6"
+			>
 				<CardHeader>
 					<CardTitle>{event.title}</CardTitle>
 					<CardDescription>{event.location.province}</CardDescription>

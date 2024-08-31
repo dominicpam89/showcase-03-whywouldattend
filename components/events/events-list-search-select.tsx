@@ -22,7 +22,7 @@ export default function SearchSelect<
 			onValueChange={field.onChange}
 			defaultValue={field.value}
 		>
-			<SelectTrigger className="max-w-[240px]">
+			<SelectTrigger className="w-full">
 				<SelectValue placeholder={placeholder} />
 			</SelectTrigger>
 			<SelectContent>
