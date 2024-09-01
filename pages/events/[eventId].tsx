@@ -4,12 +4,20 @@ import { useRouter } from "next/router";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
+import NotFoundUI from "@/components/ui-awesome/not-found";
 
 const Page: NextPageWithLayout = () => {
 	const router = useRouter();
 	const eventId = router.query.eventId as string;
 	const event = getEventById(eventId);
-	if (!event) return <p>No event found!</p>;
+	if (!event)
+		return (
+			<NotFoundUI
+				title="No Event"
+				subtitle="Requested event is null"
+				message="There's no event with given id"
+			/>
+		);
 	return <EventItem event={event} />;
 };
 
