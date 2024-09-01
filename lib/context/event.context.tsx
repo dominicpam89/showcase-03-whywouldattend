@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
-import { EventType } from "../dummy.data";
-import { convertDateString, DateConciseType } from "../utils";
+import { EventType } from "@/lib/definition/dummy-event.type";
+import { convertDateString, DateConciseType } from "@/lib/utils";
 
 export type ContextEventType = {
 	event: EventType;
