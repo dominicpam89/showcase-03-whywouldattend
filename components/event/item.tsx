@@ -1,4 +1,4 @@
-import { EventType } from "@/lib/dummy.data";
+import { EventType } from "@/lib/definition/dummy-event.type";
 import ItemHeader from "./item-header";
 import ItemContent from "./item-content";
 import ContextEventProvider from "@/lib/context/event.context";
