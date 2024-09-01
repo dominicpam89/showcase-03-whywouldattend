@@ -1,26 +1,46 @@
-import EventsListFiltered from "@/components/events-w-filter/events-list-filtered";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import NotFoundUI from "@/components/ui-awesome/not-found";
+import EventsList from "@/components/events/events-list";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { EventType } from "@/lib/definition/dummy-event.type";
+import { transformMonthStringToNumber } from "@/lib/utils";
+import { getFilteredEvents } from "@/lib/services/dummy-events.service";
 
-const Page: NextPageWithLayout = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+	return {
+		paths: [],
+		fallback: true,
+	};
+};
+
+interface PageProps {
+	events: EventType[];
+}
+
+export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
+	const { filter } = context.params as { filter: string[] };
+	const yy = filter.at(0);
+	const mm = filter.at(1);
+	if (!yy || !mm) return { notFound: true };
+	const year = parseInt(yy);
+	const month = transformMonthStringToNumber(mm);
+	if (!month) return { notFound: true };
+	const events = await getFilteredEvents({ year, month });
+	return {
+		props: { events },
+		revalidate: 60 * 15,
+	};
+};
+
+const Page: NextPageWithLayout<PageProps> = ({ events }) => {
 	const router = useRouter();
-	const { filter } = router.query;
-	const yearQuery = filter?.at(0);
-	const monthQuery = filter?.at(1);
-	if (!yearQuery || !monthQuery)
-		return (
-			<NotFoundUI
-				title="Error filter"
-				subtitle="Filter is not defined"
-				message="Maybe you should not change behavior of this app directly in the url"
-			/>
-		);
+	if (router.isFallback) return <p>Loading...</p>;
 	return (
 		<section id="events-with-filter">
-			<EventsListFiltered year={yearQuery} month={monthQuery} />
+			<EventsList events={events} />
 		</section>
 	);
 };
