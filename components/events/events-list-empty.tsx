@@ -60,7 +60,7 @@ export default function EventsListEmpty() {
 				transition={{ delay: 0.15, duration: 0.8 }}
 				className="font-light text-sm lg:text-lg"
 			>
-				Couldn't find event on respective year & month
+				Couldn&apos;t find event on respective year & month
 			</motion.p>
 		</div>
 	);
