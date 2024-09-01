@@ -26,7 +26,7 @@ export default function EventsListSearch() {
 	const { errors } = methods.formState;
 	const router = useRouter();
 	const onValid: SubmitHandler<FormType> = (data) => {
-		router.push(`/events?year=${data.year}&month=${data.month}`);
+		router.push(`/events/${data.year}/${data.month}`);
 	};
 	const onClear = () => {
 		methods.resetField("year", { defaultValue: "" });
