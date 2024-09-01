@@ -55,8 +55,8 @@ export default function EventItem({ event }: Props) {
 					/>
 				</CardContent>
 				<CardFooter>
-					<Button asChild className="w-full" variant="outline">
-						<Link href={`events/${event.id}`}>Check the details</Link>
+					<Button asChild className="w-full">
+						<Link href={`/events/${event.id}`}>Check the details</Link>
 					</Button>
 				</CardFooter>
 			</Card>
