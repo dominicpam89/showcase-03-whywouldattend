@@ -1,5 +1,5 @@
 import React from "react";
-import { getEventsYearsAndMonths } from "@/lib/dummy.data";
+import { getEventsYearsAndMonths } from "@/lib/services/dummy-events.service";
 import {
 	useForm,
 	FormProvider,

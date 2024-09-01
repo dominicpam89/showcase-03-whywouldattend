@@ -1,4 +1,4 @@
-import { EventType } from "@/lib/dummy.data";
+import { EventType } from "@/lib/definition/dummy-event.type";
 import EventItem from "./events-list-item";
 import EventsListHeading from "./events-list-heading";
 import EventsListSearch from "./events-list-search";
@@ -37,7 +37,7 @@ export default function EventsList({ events }: Props) {
 		<div aria-label="list-container" className="flex flex-col gap-6">
 			<AnimatePresence>
 				<EventsListHeading key="events-list-heading" />
-				<EventsListSearch key="events-list-search" />
+				{/* <EventsListSearch key="events-list-search" /> */}
 				{events.length == 0 && <EventsListEmpty key="events-list-empty" />}
 				<motion.div
 					key="events-list-container-animation"
