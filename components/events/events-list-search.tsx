@@ -1,7 +1,5 @@
 import React from "react";
 import { getEventsYearsAndMonths } from "@/lib/dummy.data";
-import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
 import {
 	useForm,
 	FormProvider,
@@ -14,23 +12,29 @@ import SearchErrorUI from "./events-list-search-error-ui";
 import SearchActions from "./events-list-search-actions";
 
 export default function EventsListSearch() {
+	const router = useRouter();
+
+	// coming from filter with pages
+	const { filter } = router.query;
+	const defaultYear = filter?.at(0) || "";
+	const defaultMonth = filter?.at(1) || "";
+
 	const { years, months } = getEventsYearsAndMonths();
 	type FormType = { year: string; month: string };
 	const methods = useForm<FormType>({
 		defaultValues: {
-			year: "",
-			month: "",
+			year: defaultYear,
+			month: defaultMonth,
 		},
 		mode: "onSubmit",
 	});
 	const { errors } = methods.formState;
-	const router = useRouter();
 	const onValid: SubmitHandler<FormType> = (data) => {
 		router.push(`/events/${data.year}/${data.month}`);
 	};
 	const onClear = () => {
-		methods.resetField("year", { defaultValue: "" });
-		methods.resetField("month", { defaultValue: "" });
+		methods.resetField("year", { defaultValue: defaultYear });
+		methods.resetField("month", { defaultValue: defaultMonth });
 		router.push("/events");
 	};
 	return (
