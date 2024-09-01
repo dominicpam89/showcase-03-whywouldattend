@@ -7,9 +7,8 @@ import EventsList from "@/components/events/events-list";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import { EventType } from "@/lib/definition/dummy-event.type";
-import { transformMonthStringToNumber } from "@/lib/utils";
 
 interface PageProps {
 	events: EventType[];
