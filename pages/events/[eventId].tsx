@@ -7,7 +7,7 @@ import { getEventById } from "@/lib/services/dummy-events.service";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { EventType } from "@/lib/definition/dummy-event.type";
 import { useRouter } from "next/router";
-import { Skeleton } from "@/components/ui/skeleton";
+import LoadingUI from "@/components/ui-awesome/loading";
 
 interface PageProps {
 	event: EventType | null;
@@ -42,7 +42,7 @@ const Page: NextPageWithLayout<PageProps> = ({ event }) => {
 			/>
 		);
 	if (router.isFallback) {
-		return <Skeleton className="w-full h-36" />;
+		return <LoadingUI />;
 	}
 	return <EventItem event={event} />;
 };

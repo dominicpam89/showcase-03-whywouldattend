@@ -9,7 +9,9 @@ export default function Layout({ children }: PropsWithChildren) {
 			<header className={`${styleClassesInjection}`}>
 				<Navbar />
 			</header>
-			<main className={`min-h-screen antialiased ${styleClassesInjection}`}>
+			<main
+				className={`relative min-h-screen antialiased ${styleClassesInjection}`}
+			>
 				{children}
 			</main>
 			<Footer />

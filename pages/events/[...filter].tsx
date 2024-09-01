@@ -2,12 +2,12 @@ import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
-import NotFoundUI from "@/components/ui-awesome/not-found";
 import EventsList from "@/components/events/events-list";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { EventType } from "@/lib/definition/dummy-event.type";
 import { transformMonthStringToNumber } from "@/lib/utils";
 import { getFilteredEvents } from "@/lib/services/dummy-events.service";
+import LoadingUI from "@/components/ui-awesome/loading";
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	return {
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 
 const Page: NextPageWithLayout<PageProps> = ({ events }) => {
 	const router = useRouter();
-	if (router.isFallback) return <p>Loading...</p>;
+	if (router.isFallback) return <LoadingUI />;
 	return (
 		<section id="events-with-filter">
 			<EventsList events={events} />
