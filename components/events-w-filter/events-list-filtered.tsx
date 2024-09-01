@@ -10,6 +10,7 @@ interface Props {
 export default function EventsList({ year: yy, month: mm }: Props) {
 	const year = parseInt(yy);
 	const month = transformMonthStringToNumber(mm);
+	if (!month) return <NotFoundUI />;
 	const events = getFilteredEvents({ year, month });
 	return (
 		<section id="events">

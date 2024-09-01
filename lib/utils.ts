@@ -66,10 +66,10 @@ export const transformMonthArrayNumberToString = (months: number[]) => {
 	return months.map((month) => monthNames[month - 1]);
 };
 
-export const transformMonthStringToNumber = (month: string): number => {
+export const transformMonthStringToNumber = (month: string): number | null => {
 	const monthIndex = monthNames.indexOf(month);
 	if (monthIndex === -1) {
-		throw new Error(`Invalid month name: ${month}`);
+		return null;
 	}
 	return monthIndex + 1;
 };

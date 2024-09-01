@@ -36,10 +36,11 @@ export default function EventsList({ events }: Props) {
 	return (
 		<div aria-label="list-container" className="flex flex-col gap-6">
 			<AnimatePresence>
-				<EventsListHeading />
-				<EventsListSearch />
-				{events.length == 0 && <EventsListEmpty />}
+				<EventsListHeading key="events-list-heading" />
+				<EventsListSearch key="events-list-search" />
+				{events.length == 0 && <EventsListEmpty key="events-list-empty" />}
 				<motion.div
+					key="events-list-container-animation"
 					variants={eventsListContainerVariants}
 					initial="hidden"
 					animate="visible"

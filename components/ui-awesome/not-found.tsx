@@ -2,14 +2,14 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
 
 interface Props {
-	title: string;
-	subtitle: string;
-	message: string;
+	title?: string;
+	subtitle?: string;
+	message?: string;
 }
 export default function NotFoundUI({
 	title = "404",
-	subtitle = "Something&apos;s missing",
-	message = "Sorry, the page you are looking for doesn&apos;t exist or has been moved.",
+	subtitle = "Something is missing",
+	message = "Sorry, the page you are looking for does not exist or has been moved.",
 }: Props) {
 	const router = useRouter();
 	return (
