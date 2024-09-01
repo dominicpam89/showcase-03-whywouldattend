@@ -1,5 +1,5 @@
 import React from "react";
-import { getEventsYearsAndMonths } from "@/lib/services/dummy-events.service";
+import { GetEventsYearsAndMonthsReturn } from "@/lib/services/dummy-events.service";
 import {
 	useForm,
 	FormProvider,
@@ -7,19 +7,22 @@ import {
 	Controller,
 } from "react-hook-form";
 import SearchSelect from "./events-list-search-select";
-import { useRouter } from "next/router";
 import SearchErrorUI from "./events-list-search-error-ui";
 import SearchActions from "./events-list-search-actions";
+import { useRouter } from "next/router";
 
-export default function EventsListSearch() {
+interface Props {
+	eventDates: GetEventsYearsAndMonthsReturn;
+	dateSelect: {
+		yy: string;
+		mm: string;
+	};
+}
+export default function EventsListSearch({ eventDates, dateSelect }: Props) {
+	const { years, months } = eventDates;
+	const defaultYear = dateSelect?.yy || "";
+	const defaultMonth = dateSelect?.mm || "";
 	const router = useRouter();
-
-	// coming from filter with pages
-	const { filter } = router.query;
-	const defaultYear = filter?.at(0) || "";
-	const defaultMonth = filter?.at(1) || "";
-
-	const { years, months } = getEventsYearsAndMonths();
 	type FormType = { year: string; month: string };
 	const methods = useForm<FormType>({
 		defaultValues: {

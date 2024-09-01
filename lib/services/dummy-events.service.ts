@@ -25,6 +25,7 @@ export async function getFeaturedEvents() {
 
 export async function getEventsYearsAndMonths() {
 	const events = await getAllEvents();
+	if (events.length == 0) return null;
 	const dates = events.map((event) => {
 		const year = new Date(event.date).getFullYear();
 		const month = new Date(event.date).getMonth() + 1;
@@ -38,6 +39,10 @@ export async function getEventsYearsAndMonths() {
 	const months = transformMonthArrayNumberToString(monthsArray);
 	return { years, months };
 }
+export type GetEventsYearsAndMonthsReturn = {
+	years: number[];
+	months: string[];
+};
 
 export async function getFilteredEvents(dateFilter: {
 	year: number;

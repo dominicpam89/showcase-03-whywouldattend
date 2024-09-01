@@ -4,9 +4,15 @@ import EventsListHeading from "./events-list-heading";
 import EventsListSearch from "./events-list-search";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import EventsListEmpty from "./events-list-empty";
+import { GetEventsYearsAndMonthsReturn } from "@/lib/services/dummy-events.service";
 
 interface Props {
 	events: EventType[];
+	eventDates: GetEventsYearsAndMonthsReturn;
+	dateSelect: {
+		yy: string;
+		mm: string;
+	};
 }
 
 const eventsListContainerVariants: Variants = {
@@ -32,12 +38,16 @@ const eventsListItemVariants: Variants = {
 	},
 };
 
-export default function EventsList({ events }: Props) {
+export default function EventsList({ events, eventDates, dateSelect }: Props) {
 	return (
 		<div aria-label="list-container" className="flex flex-col gap-6">
 			<AnimatePresence>
 				<EventsListHeading key="events-list-heading" />
-				{/* <EventsListSearch key="events-list-search" /> */}
+				<EventsListSearch
+					key="events-list-search"
+					eventDates={eventDates!}
+					dateSelect={dateSelect}
+				/>
 				{events.length == 0 && <EventsListEmpty key="events-list-empty" />}
 				<motion.div
 					key="events-list-container-animation"
@@ -45,7 +55,7 @@ export default function EventsList({ events }: Props) {
 					initial="hidden"
 					animate="visible"
 					aria-label="events-list-container"
-					className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center"
+					className="px-8 py-12 pt-4 lg:px-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center"
 				>
 					{events.map((event) => (
 						<motion.div
