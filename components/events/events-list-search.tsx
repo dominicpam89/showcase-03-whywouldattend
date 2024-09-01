@@ -42,7 +42,7 @@ export default function EventsListSearch() {
 			>
 				<div
 					aria-label="form-fields"
-					className="w-full flex flex-col gap-2 md:flex-row"
+					className="w-full flex flex-col gap-2 md:flex-row lg:w-2/4"
 				>
 					<Controller
 						control={methods.control}

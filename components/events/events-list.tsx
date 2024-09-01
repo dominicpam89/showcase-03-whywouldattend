@@ -3,6 +3,7 @@ import EventItem from "./events-list-item";
 import EventsListHeading from "./events-list-heading";
 import EventsListSearch from "./events-list-search";
 import { motion, Variants, AnimatePresence } from "framer-motion";
+import EventsListEmpty from "./events-list-empty";
 
 interface Props {
 	events: EventType[];
@@ -34,16 +35,17 @@ const eventsListItemVariants: Variants = {
 export default function EventsList({ events }: Props) {
 	return (
 		<div aria-label="list-container" className="flex flex-col gap-6">
-			<EventsListHeading />
-			<EventsListSearch />
-			<motion.div
-				variants={eventsListContainerVariants}
-				initial={"hidden"}
-				animate={"visible"}
-				aria-label="events-list-container"
-				className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center"
-			>
-				<AnimatePresence>
+			<AnimatePresence>
+				<EventsListHeading />
+				<EventsListSearch />
+				{events.length == 0 && <EventsListEmpty />}
+				<motion.div
+					variants={eventsListContainerVariants}
+					initial="hidden"
+					animate="visible"
+					aria-label="events-list-container"
+					className="px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center"
+				>
 					{events.map((event) => (
 						<motion.div
 							key={event.id}
@@ -54,8 +56,8 @@ export default function EventsList({ events }: Props) {
 							<EventItem event={event} />
 						</motion.div>
 					))}
-				</AnimatePresence>
-			</motion.div>
+				</motion.div>
+			</AnimatePresence>
 		</div>
 	);
 }
