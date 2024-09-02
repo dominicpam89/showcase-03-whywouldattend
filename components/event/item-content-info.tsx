@@ -6,7 +6,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Building, LandPlot } from "lucide-react";
-import { useContextEvent } from "@/lib/context/event.context.hook";
+import { useContextEvent } from "@/lib/hooks/event.context.hook";
 import LocationItem from "./item-content-info-item";
 
 export default function ItemContentLocation() {

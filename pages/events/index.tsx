@@ -9,6 +9,7 @@ import { ReactElement } from "react";
 import Layout from "@/components/Layout";
 import { GetStaticProps } from "next";
 import { EventType } from "@/lib/definition/event.type";
+import ContextEventsListProvider from "@/lib/context/events-list.context";
 
 interface PageProps {
 	events: EventType[];
@@ -22,25 +23,23 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 	if (!events) {
 		return { notFound: true };
 	}
-	if (!eventDates) return { notFound: true };
+	if (eventDates.years == null) return { notFound: true };
 	return {
-		props: { events, eventDates, dateSelect: { yy: "", mm: "" } },
-		revalidate: 60 * 15,
+		props: {
+			events,
+			eventDates: { years: eventDates.years, months: eventDates.months },
+			dateSelect: { yy: "", mm: "" },
+		},
+		revalidate: 60 * 60,
 	};
 };
 
-const Page: NextPageWithLayout<PageProps> = ({
-	events,
-	eventDates,
-	dateSelect,
-}) => {
+const Page: NextPageWithLayout<PageProps> = (props) => {
 	return (
 		<section id="events">
-			<EventsList
-				events={events}
-				eventDates={eventDates}
-				dateSelect={dateSelect}
-			/>
+			<ContextEventsListProvider {...props}>
+				<EventsList />
+			</ContextEventsListProvider>
 		</section>
 	);
 };

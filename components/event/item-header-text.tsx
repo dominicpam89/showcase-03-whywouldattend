@@ -1,6 +1,6 @@
 import React from "react";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import { useContextEvent } from "@/lib/context/event.context.hook";
+import { useContextEvent } from "@/lib/hooks/event.context.hook";
 import { motion } from "framer-motion";
 
 export default function ItemHeaderText() {

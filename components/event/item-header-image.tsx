@@ -1,5 +1,5 @@
 import React from "react";
-import { useContextEvent } from "@/lib/context/event.context.hook";
+import { useContextEvent } from "@/lib/hooks/event.context.hook";
 import Image from "next/image";
 
 export default function ItemHeaderImage() {

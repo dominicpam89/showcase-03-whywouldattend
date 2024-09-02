@@ -1,6 +1,6 @@
 import { EventType } from "@/lib/definition/event.type";
 import { db, storage } from "@/lib/firebase.config";
-import { transformMonthArrayNumberToString } from "@/lib/utils";
+import { monthNames, transformMonthArrayNumberToString } from "@/lib/utils";
 import {
 	collection,
 	query,
@@ -124,22 +124,27 @@ export async function getFeaturedEvents() {
 }
 
 export async function getEventsYearsAndMonths() {
-	const { data: events } = await getEvents();
-	if (events.length == 0) return null;
-	const dates = events.map((event) => {
-		const year = new Date(event.date).getFullYear();
-		const month = new Date(event.date).getMonth() + 1;
-		return { year, month };
-	});
-	const yearsSet = new Set(dates.map((date) => date.year));
-	const years = Array.from(yearsSet);
-
-	const monthNums = dates.map((date) => date.month).sort((a, b) => a - b);
-	const monthsArray = Array.from(new Set(monthNums));
-	const months = transformMonthArrayNumberToString(monthsArray);
+	const years = await getEventsYears();
+	const months = getEventsMonths();
 	return { years, months };
 }
 export type GetEventsYearsAndMonthsReturn = {
 	years: number[];
 	months: string[];
 };
+
+export async function getEventsYears() {
+	const { data: events } = await getEvents();
+	if (events.length == 0) return null;
+	const eventYears = events.map((event) => {
+		const year = new Date(event.date).getFullYear();
+		return year;
+	});
+	const yearsSet = new Set(eventYears);
+	const years = Array.from(yearsSet);
+	return years;
+}
+
+export function getEventsMonths() {
+	return monthNames;
+}

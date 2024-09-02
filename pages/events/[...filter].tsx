@@ -12,6 +12,7 @@ import {
 	getFilteredEvents,
 } from "@/lib/services/firebase/events.service";
 import LoadingUI from "@/components/ui-awesome/loading";
+import ContextEventsListProvider from "@/lib/context/events-list.context";
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	return {
@@ -36,27 +37,25 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 	if (!month) return { notFound: true };
 	const events = await getFilteredEvents({ year, month });
 	const eventDates = await getEventsYearsAndMonths();
-	if (!eventDates) return { notFound: true };
+	if (!eventDates.years) return { notFound: true };
 	return {
-		props: { events, eventDates, dateSelect: { yy, mm } },
+		props: {
+			events,
+			eventDates: { years: eventDates.years, months: eventDates.months },
+			dateSelect: { yy, mm },
+		},
 		revalidate: 60 * 15,
 	};
 };
 
-const Page: NextPageWithLayout<PageProps> = ({
-	events,
-	eventDates,
-	dateSelect,
-}) => {
+const Page: NextPageWithLayout<PageProps> = (props) => {
 	const router = useRouter();
 	if (router.isFallback) return <LoadingUI />;
 	return (
 		<section id="events-with-filter">
-			<EventsList
-				events={events}
-				eventDates={eventDates}
-				dateSelect={dateSelect}
-			/>
+			<ContextEventsListProvider {...props}>
+				<EventsList />
+			</ContextEventsListProvider>
 		</section>
 	);
 };

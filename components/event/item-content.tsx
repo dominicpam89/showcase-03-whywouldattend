@@ -6,7 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { useContextEvent } from "@/lib/context/event.context.hook";
+import { useContextEvent } from "@/lib/hooks/event.context.hook";
 
 export default function ItemContent() {
 	const { event, date } = useContextEvent();
