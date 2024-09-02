@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { EventType } from "@/lib/dummy.data";
+import { EventType } from "@/lib/definition/event.type";
 import { transformDate } from "@/lib/utils";
 import { CalendarDaysIcon } from "lucide-react";
 import { useRouter } from "next/router";

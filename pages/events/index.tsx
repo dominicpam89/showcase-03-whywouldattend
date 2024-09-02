@@ -1,8 +1,8 @@
 import {
-	getAllEvents,
+	getEvents,
 	getEventsYearsAndMonths,
 	GetEventsYearsAndMonthsReturn,
-} from "@/lib/services/dummy-events.service";
+} from "@/lib/services/firebase/events.service";
 import EventsList from "@/components/events/events-list";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
@@ -17,7 +17,7 @@ interface PageProps {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-	const events = await getAllEvents();
+	const { data: events } = await getEvents();
 	const eventDates = await getEventsYearsAndMonths();
 	if (!events) {
 		return { notFound: true };

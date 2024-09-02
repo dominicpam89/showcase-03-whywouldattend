@@ -10,7 +10,7 @@ import {
 	GetEventsYearsAndMonthsReturn,
 	getEventsYearsAndMonths,
 	getFilteredEvents,
-} from "@/lib/services/dummy-events.service";
+} from "@/lib/services/firebase/events.service";
 import LoadingUI from "@/components/ui-awesome/loading";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -48,7 +48,6 @@ const Page: NextPageWithLayout<PageProps> = ({
 	eventDates,
 	dateSelect,
 }) => {
-	console.log(eventDates);
 	const router = useRouter();
 	if (router.isFallback) return <LoadingUI />;
 	return (
