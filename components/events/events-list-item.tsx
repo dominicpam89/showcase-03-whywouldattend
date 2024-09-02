@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { EventType } from "@/lib/definition/event.type";
 import { transformDate } from "@/lib/utils";
 import { CalendarDaysIcon } from "lucide-react";
@@ -44,7 +43,7 @@ export default function EventItem({ event }: Props) {
 					</div>
 				</CardHeader>
 				<CardContent>
-					<Image
+					<img
 						src={event.image}
 						height="1000"
 						width="1000"
