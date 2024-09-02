@@ -1,0 +1,6 @@
+[[redirects]]
+from = '/_next/image'
+to = '/.netlify/image'
+query = { url=':url', q = ':quality', w = ':width' }
+status = 200
+force = true
