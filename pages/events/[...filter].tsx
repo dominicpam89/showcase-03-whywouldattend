@@ -1,37 +1,24 @@
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
-import { useRouter } from "next/router";
 import EventsList from "@/components/events/events-list";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { EventType } from "@/lib/definition/event.type";
+import { GetServerSideProps } from "next";
 import { transformMonthStringToNumber } from "@/lib/utils";
 import {
-	GetEventsYearsAndMonthsReturn,
 	getEventsYearsAndMonths,
 	getFilteredEvents,
 } from "@/lib/services/firebase/events.service";
-import LoadingUI from "@/components/ui-awesome/loading";
-import ContextEventsListProvider from "@/lib/context/events-list.context";
+import ContextEventsListProvider, {
+	ContextEventsListType,
+} from "@/lib/context/events-list.context";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	return {
-		paths: [],
-		fallback: true,
-	};
-};
-
-interface PageProps {
-	events: EventType[];
-	eventDates: GetEventsYearsAndMonthsReturn;
-	dateSelect: { yy: string; mm: string };
-}
-
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
+export const getServerSideProps: GetServerSideProps<
+	ContextEventsListType
+> = async (context) => {
 	const { filter } = context.params as { filter: string[] };
 	const yy = filter.at(0);
 	const mm = filter.at(1);
-	if (!yy || !mm) return { notFound: true };
+	if (!yy || !mm) return { notFound: true, redirect: "/events" };
 	const year = parseInt(yy);
 	const month = transformMonthStringToNumber(mm);
 	if (!month) return { notFound: true };
@@ -44,13 +31,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
 			eventDates: { years: eventDates.years, months: eventDates.months },
 			dateSelect: { yy, mm },
 		},
-		revalidate: 60 * 15,
 	};
 };
 
-const Page: NextPageWithLayout<PageProps> = (props) => {
-	const router = useRouter();
-	if (router.isFallback) return <LoadingUI />;
+const Page: NextPageWithLayout<ContextEventsListType> = (props) => {
 	return (
 		<section id="events-with-filter">
 			<ContextEventsListProvider {...props}>

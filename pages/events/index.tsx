@@ -1,23 +1,19 @@
 import {
 	getEvents,
 	getEventsYearsAndMonths,
-	GetEventsYearsAndMonthsReturn,
 } from "@/lib/services/firebase/events.service";
 import EventsList from "@/components/events/events-list";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
 import { GetStaticProps } from "next";
-import { EventType } from "@/lib/definition/event.type";
-import ContextEventsListProvider from "@/lib/context/events-list.context";
+import ContextEventsListProvider, {
+	ContextEventsListType,
+} from "@/lib/context/events-list.context";
 
-interface PageProps {
-	events: EventType[];
-	eventDates: GetEventsYearsAndMonthsReturn;
-	dateSelect: { yy: string; mm: string };
-}
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
+export const getStaticProps: GetStaticProps<
+	ContextEventsListType
+> = async () => {
 	const { data: events } = await getEvents();
 	const eventDates = await getEventsYearsAndMonths();
 	if (!events) {
@@ -34,7 +30,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 	};
 };
 
-const Page: NextPageWithLayout<PageProps> = (props) => {
+const Page: NextPageWithLayout<ContextEventsListType> = (props) => {
 	return (
 		<section id="events">
 			<ContextEventsListProvider {...props}>

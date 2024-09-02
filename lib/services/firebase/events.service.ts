@@ -1,6 +1,6 @@
 import { EventType } from "@/lib/definition/event.type";
 import { db, storage } from "@/lib/firebase.config";
-import { monthNames, transformMonthArrayNumberToString } from "@/lib/utils";
+import { monthNames } from "@/lib/utils";
 import {
 	collection,
 	query,
