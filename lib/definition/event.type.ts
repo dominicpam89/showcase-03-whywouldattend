@@ -28,6 +28,7 @@ export type EventFormType = {
 };
 
 export type FeaturedEventType = {
+	id: string;
 	title: string;
 	description: string;
 	imageUrl: string;

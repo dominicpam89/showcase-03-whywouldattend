@@ -8,7 +8,10 @@ interface Props {
 
 export default function FeaturedEvents({ events }: Props) {
 	return (
-		<div className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+		<div
+			aria-label="featured-events-container"
+			className="py-16 px-8 lg:px-12 mx-auto max-w-7xl"
+		>
 			<div className="mx-auto max-w-2xl text-center mb-16">
 				<h2 className="text-base font-semibold leading-7 text-primary">
 					Oh wow this feature section again, duh.
@@ -28,8 +31,8 @@ export default function FeaturedEvents({ events }: Props) {
 				></TypingAnimation>
 			</div>
 			<div className="mt-8 flex flex-col gap-16">
-				{events.map((event, index) => (
-					<FeaturedEventsItem key={index} {...event} />
+				{events.map((event) => (
+					<FeaturedEventsItem key={event.id} {...event} />
 				))}
 			</div>
 		</div>

@@ -17,6 +17,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 	const events = data.map((event, index) => {
 		const isImageLeft = index % 2 == 0;
 		return {
+			id: event.id,
 			title: event.title,
 			description: event.subtitle,
 			imageUrl: event.image,
