@@ -13,6 +13,8 @@ interface Props {
 		yy: string;
 		mm: string;
 	};
+	withSearch?: boolean;
+	withHeader?: boolean;
 }
 
 const eventsListContainerVariants: Variants = {
@@ -38,16 +40,24 @@ const eventsListItemVariants: Variants = {
 	},
 };
 
-export default function EventsList({ events, eventDates, dateSelect }: Props) {
+export default function EventsList({
+	events,
+	eventDates,
+	dateSelect,
+	withSearch = true,
+	withHeader = true,
+}: Props) {
 	return (
 		<div aria-label="list-container" className="flex flex-col gap-6">
 			<AnimatePresence>
-				<EventsListHeading key="events-list-heading" />
-				<EventsListSearch
-					key="events-list-search"
-					eventDates={eventDates!}
-					dateSelect={dateSelect}
-				/>
+				{withHeader && <EventsListHeading key="events-list-heading" />}
+				{withSearch && (
+					<EventsListSearch
+						key="events-list-search"
+						eventDates={eventDates!}
+						dateSelect={dateSelect}
+					/>
+				)}
 				{events.length == 0 && <EventsListEmpty key="events-list-empty" />}
 				<motion.div
 					key="events-list-container-animation"

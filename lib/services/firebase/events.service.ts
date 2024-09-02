@@ -1,7 +1,14 @@
 import { EventType } from "@/lib/definition/event.type";
 import { db, storage } from "@/lib/firebase.config";
 import { transformMonthArrayNumberToString } from "@/lib/utils";
-import { collection, query, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+	collection,
+	query,
+	getDocs,
+	doc,
+	getDoc,
+	where,
+} from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 
 const COLLECTION_NAME = "events";
@@ -28,14 +35,12 @@ export async function getEvents() {
 				return { ...event, image: imageUrl };
 			})
 		);
-		let data = null;
-		if (events) data = events;
-		if (data)
+		if (events)
 			return {
 				error: false,
 				name: "query success",
 				message: "successfully fetch events list",
-				data,
+				data: events,
 			} satisfies QueryResponseType<EventType[]>;
 		else throw new Error("No data found");
 	} catch (error) {
@@ -86,6 +91,36 @@ export async function getFilteredEvents(dateFilter: {
 	});
 
 	return filteredEvents;
+}
+
+export async function getFeaturedEvents() {
+	try {
+		const q = query(cols, where("isFeatured", "==", true));
+		const snapshot = await getDocs(q);
+		const events: EventType[] = await Promise.all(
+			snapshot.docs.map(async (doc) => {
+				const event = doc.data() as EventType;
+				const imageRef = ref(storage, STORAGE_REF.concat(event.image));
+				const imageUrl = await getDownloadURL(imageRef);
+				return { ...event, image: imageUrl };
+			})
+		);
+		if (events)
+			return {
+				error: false,
+				name: "query success",
+				message: "successfully fetch events list",
+				data: events,
+			} satisfies QueryResponseType<EventType[]>;
+		else throw new Error("No data found");
+	} catch (error) {
+		throw {
+			error: true,
+			name: "get featured events",
+			message: "failed to get featured events",
+			data: error,
+		};
+	}
 }
 
 export async function getEventsYearsAndMonths() {

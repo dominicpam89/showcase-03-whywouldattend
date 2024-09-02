@@ -26,3 +26,10 @@ export type EventFormType = {
 	image: File;
 	isFeatured: boolean;
 };
+
+export type FeaturedEventType = {
+	title: string;
+	description: string;
+	imageUrl: string;
+	isImageLeft: boolean;
+};
