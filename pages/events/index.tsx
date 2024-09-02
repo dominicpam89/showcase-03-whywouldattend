@@ -8,7 +8,7 @@ import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
 import Layout from "@/components/Layout";
 import { GetStaticProps } from "next";
-import { EventType } from "@/lib/definition/dummy-event.type";
+import { EventType } from "@/lib/definition/event.type";
 
 interface PageProps {
 	events: EventType[];

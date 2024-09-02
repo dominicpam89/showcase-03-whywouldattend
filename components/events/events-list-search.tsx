@@ -1,5 +1,5 @@
 import React from "react";
-import { GetEventsYearsAndMonthsReturn } from "@/lib/services/dummy-events.service";
+import { GetEventsYearsAndMonthsReturn } from "@/lib/services/firebase/events.service";
 import {
 	useForm,
 	FormProvider,

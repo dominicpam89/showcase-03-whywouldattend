@@ -3,7 +3,6 @@ import Image from "next/image";
 import { EventType } from "@/lib/definition/event.type";
 import { transformDate } from "@/lib/utils";
 import { CalendarDaysIcon } from "lucide-react";
-import { useRouter } from "next/router";
 import {
 	Card,
 	CardContent,
@@ -21,7 +20,6 @@ interface Props {
 }
 export default function EventItem({ event }: Props) {
 	const date = transformDate(event.date);
-	const router = useRouter();
 	return (
 		<motion.div
 			whileHover={{

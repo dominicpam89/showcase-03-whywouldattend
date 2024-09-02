@@ -1,7 +1,7 @@
 "use client";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
-import { EventType } from "@/lib/dummy.data";
+import { EventType } from "@/lib/definition/event.type";
 import { transformDate } from "@/lib/utils";
 import { CalendarDaysIcon } from "lucide-react";
 import { useRouter } from "next/router";

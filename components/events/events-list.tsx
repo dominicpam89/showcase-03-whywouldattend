@@ -1,4 +1,4 @@
-import { EventType } from "@/lib/definition/dummy-event.type";
+import { EventType } from "@/lib/definition/event.type";
 import EventItem from "./events-list-item";
 import EventsListHeading from "./events-list-heading";
 import EventsListSearch from "./events-list-search";

@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import EventsList from "@/components/events/events-list";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { EventType } from "@/lib/definition/dummy-event.type";
+import { EventType } from "@/lib/definition/event.type";
 import { transformMonthStringToNumber } from "@/lib/utils";
 import {
 	GetEventsYearsAndMonthsReturn,

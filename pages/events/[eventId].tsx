@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import NotFoundUI from "@/components/ui-awesome/not-found";
 import { getEventById } from "@/lib/services/firebase/events.service";
 import { GetServerSideProps } from "next";
-import { EventType } from "@/lib/definition/dummy-event.type";
+import { EventType } from "@/lib/definition/event.type";
 
 interface PageProps {
 	event: EventType | null;

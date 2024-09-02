@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { transformMonthArrayNumberToString } from "@/lib/utils";
-import { EventType } from "@/lib/definition/dummy-event.type";
+import { EventType } from "@/lib/definition/event.type";
 
 const dummyEventsFilePath = path.join(
 	process.cwd(),
