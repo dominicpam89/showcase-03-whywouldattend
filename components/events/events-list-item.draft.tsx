@@ -1,10 +1,10 @@
 "use client";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Image from "next/image";
 import { EventType } from "@/lib/definition/event.type";
 import { transformDate } from "@/lib/utils";
 import { CalendarDaysIcon } from "lucide-react";
 import { useRouter } from "next/router";
+import ImageComp from "@/components/ImageComp";
 
 interface Props {
 	event: EventType;
@@ -46,7 +46,7 @@ export default function EventItem({ event }: Props) {
 					<h4>{date}</h4>
 				</CardItem>
 				<CardItem translateZ="150" className="w-full mt-4">
-					<img
+					<ImageComp
 						src={event.image}
 						height={1000}
 						width={1000}

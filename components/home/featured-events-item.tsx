@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { FeaturedEventType } from "@/lib/definition/event.type";
-import Image from "next/image";
 import { FC } from "react";
 import ImageAnim from "./featured-events-image-anim";
 import { useRouter } from "next/router";
+import ImageComp from "@/components/ImageComp";
 
 const FeaturedEventsItem: FC<FeaturedEventType> = ({
 	id,
@@ -17,7 +17,7 @@ const FeaturedEventsItem: FC<FeaturedEventType> = ({
 		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
 			{isImageLeft && (
 				<div className="relative order-1 md:order-1">
-					<img
+					<ImageComp
 						className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
 						src={imageUrl}
 						alt={title}
@@ -47,7 +47,7 @@ const FeaturedEventsItem: FC<FeaturedEventType> = ({
 			</div>
 			{!isImageLeft && (
 				<div className="relative order-1 md:order-2">
-					<img
+					<ImageComp
 						className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
 						src={imageUrl}
 						alt={title}
