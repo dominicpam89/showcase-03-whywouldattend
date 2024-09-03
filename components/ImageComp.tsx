@@ -24,7 +24,7 @@ const ImageComp: React.FC<CustomImageProps> = ({ src, alt, ...props }) => {
 				<h2 className="text-destructive font-extrabold text-2xl">
 					No Image
 				</h2>
-				<p className="text-destructive">Couldn't fetch image</p>
+				<p className="text-destructive">Couldn&apos;t fetch image</p>
 			</div>
 		);
 	}
