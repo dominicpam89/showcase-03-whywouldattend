@@ -5,14 +5,12 @@ import Image from "next/image";
 export default function ItemHeaderImage() {
 	const { event } = useContextEvent();
 	return (
-		<div aria-label="image-container" className="relative w-full h-[50vh]">
-			<Image
+		<div aria-label="image-container" className="relative w-full h-[320px]">
+			<img
 				src={event.image}
 				alt={event.title}
-				fill
 				height={640}
 				width={800}
-				sizes="100%"
 				className="object-cover object-bottom"
 			/>
 		</div>

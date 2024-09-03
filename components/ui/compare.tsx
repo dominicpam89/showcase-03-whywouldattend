@@ -210,7 +210,7 @@ export const Compare = ({
 							}}
 							transition={{ duration: 0 }}
 						>
-							<Image
+							<img
 								height={1600}
 								width={2400}
 								alt="first image"

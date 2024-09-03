@@ -46,7 +46,7 @@ export default function EventItem({ event }: Props) {
 					<h4>{date}</h4>
 				</CardItem>
 				<CardItem translateZ="150" className="w-full mt-4">
-					<Image
+					<img
 						src={event.image}
 						height={1000}
 						width={1000}

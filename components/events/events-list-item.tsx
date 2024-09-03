@@ -44,7 +44,7 @@ export default function EventItem({ event }: Props) {
 					</div>
 				</CardHeader>
 				<CardContent>
-					<Image
+					<img
 						src={event.image}
 						height={1000}
 						width={1000}
