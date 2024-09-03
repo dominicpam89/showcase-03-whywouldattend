@@ -9,8 +9,8 @@ export default function ItemHeaderImage() {
 			<ImageComp
 				src={event.image}
 				alt={event.title}
-				height={640}
-				width={800}
+				width={320}
+				height={240}
 				className="object-cover object-bottom"
 			/>
 		</div>

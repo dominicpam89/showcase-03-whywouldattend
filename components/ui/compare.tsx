@@ -211,8 +211,8 @@ export const Compare = ({
 							transition={{ duration: 0 }}
 						>
 							<ImageComp
-								height={1600}
-								width={2400}
+								height={640}
+								width={800}
 								alt="first image"
 								src={firstImage}
 								className={cn(

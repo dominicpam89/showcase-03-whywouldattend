@@ -1,5 +1,5 @@
 import React from "react";
-import useImageLoader from "@/lib/hooks/image.hook"; // Adjust the path according to your project structure
+import useImageLoader from "@/lib/hooks/image.hook";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface CustomImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -7,7 +7,6 @@ interface CustomImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 	alt: string;
 	width: number;
 	height: number;
-	placeholder?: string; // Optional placeholder image
 }
 
 const ImageComp: React.FC<CustomImageProps> = ({
@@ -15,19 +14,24 @@ const ImageComp: React.FC<CustomImageProps> = ({
 	alt,
 	width,
 	height,
-	placeholder,
 	...props
 }) => {
 	const { isLoading, hasError } = useImageLoader(src);
 
 	if (hasError) {
-		return <div>Error loading image</div>;
+		return (
+			<div
+				className={`h-[${height}px] w-[${width}px] flex justify-center items-center`}
+			>
+				<p className="text-destructive">Couldn't fetch image</p>
+			</div>
+		);
 	}
 
 	return (
 		<>
-			{isLoading && placeholder && (
-				<Skeleton className={`h-[${height}] w-[${width}]`} />
+			{isLoading && (
+				<Skeleton className={`h-[${height}px] w-[${width}px]`} />
 			)}
 			<img
 				src={src}

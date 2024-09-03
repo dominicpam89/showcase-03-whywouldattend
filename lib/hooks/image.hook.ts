@@ -31,7 +31,7 @@ function useImageLoader(src: string) {
 			img.onload = null;
 			img.onerror = null;
 		};
-	}, [src, handleLoadStart, handleLoad, handleError]);
+	}, [src]);
 
 	return { isLoading, hasError };
 }
