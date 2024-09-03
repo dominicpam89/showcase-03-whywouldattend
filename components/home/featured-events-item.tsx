@@ -21,8 +21,6 @@ const FeaturedEventsItem: FC<FeaturedEventType> = ({
 						className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
 						src={imageUrl}
 						alt={title}
-						height={320}
-						width={240}
 					/>
 					<ImageAnim words={["yeah?", "hire me for $100 perhour?"]} />
 				</div>
@@ -51,8 +49,6 @@ const FeaturedEventsItem: FC<FeaturedEventType> = ({
 						className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
 						src={imageUrl}
 						alt={title}
-						height={320}
-						width={240}
 					/>
 					<ImageAnim words={["what?", "turn me into CEO?"]} />
 				</div>

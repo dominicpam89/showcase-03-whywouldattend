@@ -9,9 +9,7 @@ export default function ItemHeaderImage() {
 			<ImageComp
 				src={event.image}
 				alt={event.title}
-				width={320}
-				height={240}
-				className="object-cover object-bottom"
+				className="w-full h-full object-cover object-bottom"
 			/>
 		</div>
 	);

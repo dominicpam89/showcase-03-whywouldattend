@@ -5,24 +5,25 @@ import { Skeleton } from "@/components/ui/skeleton";
 interface CustomImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 	src: string;
 	alt: string;
-	width: number;
-	height: number;
 }
 
-const ImageComp: React.FC<CustomImageProps> = ({
-	src,
-	alt,
-	width,
-	height,
-	...props
-}) => {
+const LoadingUI = () => {
+	return <Skeleton className="h-full min-h-[320px] w-full" />;
+};
+
+const ImageComp: React.FC<CustomImageProps> = ({ src, alt, ...props }) => {
 	const { isLoading, hasError } = useImageLoader(src);
 
 	if (hasError) {
 		return (
 			<div
-				className={`h-[${height}px] w-[${width}px] flex justify-center items-center`}
+				className={
+					"flex flex-col gap-1 justify-center items-center h-auto w-full"
+				}
 			>
+				<h2 className="text-destructive font-extrabold text-2xl">
+					No Image
+				</h2>
 				<p className="text-destructive">Couldn't fetch image</p>
 			</div>
 		);
@@ -30,14 +31,10 @@ const ImageComp: React.FC<CustomImageProps> = ({
 
 	return (
 		<>
-			{isLoading && (
-				<Skeleton className={`h-[${height}px] w-[${width}px]`} />
-			)}
+			{isLoading && <LoadingUI />}
 			<img
 				src={src}
 				alt={alt}
-				width={width}
-				height={height}
 				style={{ display: isLoading ? "none" : "block" }}
 				{...props}
 			/>
