@@ -1,96 +1,61 @@
-import React from "react";
-import { GetEventsYearsAndMonthsReturn } from "@/lib/services/firebase/events.service";
 import {
-	useForm,
-	FormProvider,
-	SubmitHandler,
-	Controller,
-} from "react-hook-form";
-import SearchSelect from "./events-list-search-select";
-import SearchErrorUI from "./events-list-search-error-ui";
-import SearchActions from "./events-list-search-actions";
+	Drawer,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from "@/components/ui/drawer";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { AirplayIcon } from "lucide-react";
+import EventsListSearchForm from "./events-list-search-form";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { useRouter } from "next/router";
 
-interface Props {
-	eventDates: GetEventsYearsAndMonthsReturn;
-	dateSelect: {
-		yy: string;
-		mm: string;
-	};
-}
-export default function EventsListSearch({ eventDates, dateSelect }: Props) {
-	const { years, months } = eventDates;
-	const defaultYear = dateSelect?.yy || "";
-	const defaultMonth = dateSelect?.mm || "";
+export default function EventsListSearch() {
+	const contentItemClasses = "px-6 md:px-24 lg:px-36";
+	const [open, setOpen] = useState(false);
+	const onOpenChange = (o: boolean) => setOpen(o);
 	const router = useRouter();
-	type FormType = { year: string; month: string };
-	const methods = useForm<FormType>({
-		defaultValues: {
-			year: defaultYear,
-			month: defaultMonth,
-		},
-		mode: "onSubmit",
-	});
-	const { errors } = methods.formState;
-	const onValid: SubmitHandler<FormType> = (data) => {
-		router.push(`/events/${data.year}/${data.month}`);
-	};
-	const onClear = () => {
-		methods.resetField("year", { defaultValue: defaultYear });
-		methods.resetField("month", { defaultValue: defaultMonth });
-		router.push("/events");
-	};
+	const isEvents = router.pathname == "/events";
 	return (
-		<FormProvider {...methods}>
-			<form
-				aria-label="events-search"
-				className="px-8 lg:px-16 flex flex-col gap-5 lg:flex-row lg:items-center"
-				onSubmit={methods.handleSubmit(onValid)}
-			>
-				<div
-					aria-label="form-fields"
-					className="w-full flex flex-col gap-2 md:flex-row lg:w-2/4"
+		<div
+			aria-label="events-list-search-container"
+			className="px-8 lg:px-16 w-full lg:w-1/2 lg:mx-auto flex gap-2 items-center"
+		>
+			{!isEvents && (
+				<Button
+					variant="outline"
+					className="w-full"
+					onClick={() => router.push("/events")}
 				>
-					<Controller
-						control={methods.control}
-						name="year"
-						rules={{
-							required: { value: true, message: "Year is required" },
-						}}
-						render={({ field }) => (
-							<SearchSelect<FormType, "year">
-								field={field}
-								vals={years}
-								placeholder="Select Year"
-							/>
-						)}
-					/>
-					<Controller
-						control={methods.control}
-						name="month"
-						rules={{
-							required: { value: true, message: "Month is required" },
-						}}
-						render={({ field }) => (
-							<SearchSelect<FormType, "month">
-								field={field}
-								vals={months}
-								placeholder="Select Month"
-							/>
-						)}
-					/>
-				</div>
-				<SearchActions onClear={onClear} />
-				{errors.year && !errors.month && (
-					<SearchErrorUI message={errors.year.message!} />
-				)}
-				{errors.month && !errors.year && (
-					<SearchErrorUI message={errors.month.message!} />
-				)}
-				{errors.year && errors.month && (
-					<SearchErrorUI message={"Months and years are required!"} />
-				)}
-			</form>
-		</FormProvider>
+					View All
+				</Button>
+			)}
+			<Drawer open={open} onOpenChange={onOpenChange}>
+				<DrawerTrigger
+					className={cn(
+						"w-full flex gap-1 items-center justify-center",
+						buttonVariants({ variant: "default" })
+					)}
+				>
+					<AirplayIcon />
+					Search Events
+				</DrawerTrigger>
+				<DrawerContent>
+					<DrawerHeader className={`mt-24 ${contentItemClasses}`}>
+						<DrawerTitle>Hit Search once you&apos;ve done</DrawerTitle>
+						<DrawerDescription>
+							Search based on years and months
+						</DrawerDescription>
+					</DrawerHeader>
+					<DrawerFooter className={`pb-24 ${contentItemClasses}`}>
+						<EventsListSearchForm onOpenChange={onOpenChange} />
+					</DrawerFooter>
+				</DrawerContent>
+			</Drawer>
+		</div>
 	);
 }

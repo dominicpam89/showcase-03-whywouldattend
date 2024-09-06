@@ -1,10 +1,8 @@
-import { EventType } from "@/lib/definition/event.type";
 import EventItem from "./events-list-item";
 import EventsListHeading from "./events-list-heading";
 import EventsListSearch from "./events-list-search";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import EventsListEmpty from "./events-list-empty";
-import { GetEventsYearsAndMonthsReturn } from "@/lib/services/dummy-events.service";
 import { useContextEventsList } from "@/lib/hooks/events-list.context.hook";
 
 interface Props {
@@ -39,18 +37,12 @@ export default function EventsList({
 	withSearch = true,
 	withHeader = true,
 }: Props) {
-	const { events, eventDates, dateSelect } = useContextEventsList();
+	const { events } = useContextEventsList();
 	return (
 		<div aria-label="list-container" className="flex flex-col gap-6">
 			<AnimatePresence>
 				{withHeader && <EventsListHeading key="events-list-heading" />}
-				{withSearch && (
-					<EventsListSearch
-						key="events-list-search"
-						eventDates={eventDates!}
-						dateSelect={dateSelect}
-					/>
-				)}
+				{withSearch && <EventsListSearch key="events-list-search" />}
 				{events.length == 0 && <EventsListEmpty key="events-list-empty" />}
 				<motion.div
 					key="events-list-container-animation"
