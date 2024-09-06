@@ -23,7 +23,7 @@ export default function EventsListSearch() {
 	return (
 		<div
 			aria-label="events-list-search-container"
-			className="px-8 lg:px-16 w-full lg:w-1/2 lg:mx-auto flex gap-2 items-center"
+			className="px-8 lg:px-16 w-full lg:w-1/3 lg:ml-auto flex gap-2 items-center"
 		>
 			{!isEvents && (
 				<Button
