@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ImageUI from "@/components/Image";
 
 interface Props {
 	event: EventType;
@@ -43,13 +44,17 @@ export default function EventItem({ event }: Props) {
 					</div>
 				</CardHeader>
 				<CardContent>
-					<img
-						src={event.image}
-						height="1000"
-						width="1000"
+					<div
+						aria-label="image-container"
 						className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-						alt="thumbnail"
-					/>
+					>
+						<ImageUI
+							src={event.image}
+							height={320}
+							width={240}
+							alt="thumbnail"
+						/>
+					</div>
 				</CardContent>
 				<CardFooter>
 					<Button asChild className="w-full">

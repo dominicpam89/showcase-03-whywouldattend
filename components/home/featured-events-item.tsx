@@ -3,6 +3,7 @@ import { FeaturedEventType } from "@/lib/definition/event.type";
 import { FC } from "react";
 import ImageAnim from "./featured-events-image-anim";
 import { useRouter } from "next/router";
+import ImageUI from "../Image";
 
 const FeaturedEventsItem: FC<FeaturedEventType> = ({
 	id,
@@ -16,13 +17,17 @@ const FeaturedEventsItem: FC<FeaturedEventType> = ({
 		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
 			{isImageLeft && (
 				<div className="relative order-1 md:order-1">
-					<img
+					<div
+						aria-label="image-container"
 						className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
-						src={imageUrl}
-						alt={title}
-						height={320}
-						width={240}
-					/>
+					>
+						<ImageUI
+							src={imageUrl}
+							alt={title}
+							height={320}
+							width={240}
+						/>
+					</div>
 					<ImageAnim words={["yeah?", "hire me for $100 perhour?"]} />
 				</div>
 			)}
@@ -46,13 +51,17 @@ const FeaturedEventsItem: FC<FeaturedEventType> = ({
 			</div>
 			{!isImageLeft && (
 				<div className="relative order-1 md:order-2">
-					<img
+					<div
+						aria-label="image-container"
 						className="w-full max-w-2xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
-						src={imageUrl}
-						alt={title}
-						height={320}
-						width={240}
-					/>
+					>
+						<ImageUI
+							src={imageUrl}
+							alt={title}
+							height={320}
+							width={240}
+						/>
+					</div>
 					<ImageAnim words={["what?", "turn me into CEO?"]} />
 				</div>
 			)}
