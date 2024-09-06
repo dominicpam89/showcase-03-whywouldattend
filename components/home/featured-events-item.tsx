@@ -3,7 +3,7 @@ import { FeaturedEventType } from "@/lib/definition/event.type";
 import { FC } from "react";
 import ImageAnim from "./featured-events-image-anim";
 import { useRouter } from "next/router";
-import ImageUI from "../Image";
+import ImageUI from "@/components/Image";
 
 const FeaturedEventsItem: FC<FeaturedEventType> = ({
 	id,

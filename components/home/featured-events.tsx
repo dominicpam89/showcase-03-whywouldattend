@@ -1,6 +1,6 @@
 import { FeaturedEventType } from "@/lib/definition/event.type";
 import FeaturedEventsItem from "./featured-events-item";
-import TypingAnimation from "../ui-awesome/typing-animation";
+import TypingAnimation from "@/components/ui-awesome/typing-animation";
 
 interface Props {
 	events: FeaturedEventType[];
