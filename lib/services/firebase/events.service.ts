@@ -11,10 +11,33 @@ import {
 } from "firebase/firestore";
 import { ref, getDownloadURL } from "firebase/storage";
 
+/**
+ * Firebase Firestore collection name for events.
+ * @constant {string}
+ */
 const COLLECTION_NAME = "events";
+
+/**
+ * Firestore collection reference for events.
+ * @constant {CollectionReference}
+ */
 const cols = collection(db, COLLECTION_NAME);
+
+/**
+ * Firebase storage reference path for images.
+ * @constant {string}
+ */
 const STORAGE_REF = "showcase-3";
 
+/**
+ * A type representing the structure of a query response.
+ * @template T
+ * @type {Object} QueryResponseType
+ * @property {boolean} error - Indicates if there was an error.
+ * @property {string} name - The name or description of the query.
+ * @property {string} message - A descriptive message about the query outcome.
+ * @property {T | null} data - The data returned from the query, or null in case of an error.
+ */
 export type QueryResponseType<T> = {
 	error: boolean;
 	name: string;
@@ -22,7 +45,14 @@ export type QueryResponseType<T> = {
 	data: T | null;
 };
 
-// READ
+/**
+ * Fetches all events from Firestore.
+ *
+ * @async
+ * @function getEvents
+ * @returns {Promise<QueryResponseType<EventType[]>>} - A promise that resolves to the query result containing a list of events.
+ * @throws {Error} - If the query fails or no data is found.
+ */
 export async function getEvents() {
 	try {
 		const q = query(cols);
@@ -48,7 +78,15 @@ export async function getEvents() {
 	}
 }
 
-// READ ONE BY ID
+/**
+ * Fetches a single event by its ID from Firestore.
+ *
+ * @async
+ * @function getEventById
+ * @param {string} eventId - The ID of the event to fetch.
+ * @returns {Promise<EventType>} - A promise that resolves to the event data.
+ * @throws {QueryResponseType<Error>} - If the event is not found or the query fails.
+ */
 export async function getEventById(eventId: string) {
 	try {
 		const eventRef = doc(db, COLLECTION_NAME, eventId);
@@ -75,6 +113,14 @@ export async function getEventById(eventId: string) {
 	}
 }
 
+/**
+ * Filters events based on the provided date filter (year and month).
+ *
+ * @async
+ * @function getFilteredEvents
+ * @param {{ year: number; month: number }} dateFilter - The filter object containing year and month to filter events.
+ * @returns {Promise<EventType[]>} - A promise that resolves to a list of filtered events.
+ */
 export async function getFilteredEvents(dateFilter: {
 	year: number;
 	month: number;
@@ -93,6 +139,14 @@ export async function getFilteredEvents(dateFilter: {
 	return filteredEvents;
 }
 
+/**
+ * Fetches all featured events from Firestore.
+ *
+ * @async
+ * @function getFeaturedEvents
+ * @returns {Promise<QueryResponseType<EventType[]>>} - A promise that resolves to the query result containing a list of featured events.
+ * @throws {QueryResponseType<Error>} - If the query fails.
+ */
 export async function getFeaturedEvents() {
 	try {
 		const q = query(cols, where("isFeatured", "==", true));
@@ -123,16 +177,37 @@ export async function getFeaturedEvents() {
 	}
 }
 
+/**
+ * Fetches available years and months for events.
+ *
+ * @async
+ * @function getEventsYearsAndMonths
+ * @returns {Promise<GetEventsYearsAndMonthsReturn>} - A promise that resolves to an object containing available years and months for events.
+ */
 export async function getEventsYearsAndMonths() {
 	const years = await getEventsYears();
 	const months = getEventsMonths();
 	return { years, months };
 }
+
+/**
+ * A return type for the getEventsYearsAndMonths function.
+ * @type {Object} GetEventsYearsAndMonthsReturn
+ * @property {number[]} years - An array of available years for events.
+ * @property {string[]} months - An array of available months for events.
+ */
 export type GetEventsYearsAndMonthsReturn = {
 	years: number[];
 	months: string[];
 };
 
+/**
+ * Fetches available years for events from Firestore.
+ *
+ * @async
+ * @function getEventsYears
+ * @returns {Promise<number[] | null>} - A promise that resolves to an array of available years for events or null if no events are found.
+ */
 export async function getEventsYears() {
 	const { data: events } = await getEvents();
 	if (events.length == 0) return null;
@@ -145,6 +220,12 @@ export async function getEventsYears() {
 	return years;
 }
 
+/**
+ * Fetches available months for events.
+ *
+ * @function getEventsMonths
+ * @returns {string[]} - An array of available months for events.
+ */
 export function getEventsMonths() {
 	return monthNames;
 }
