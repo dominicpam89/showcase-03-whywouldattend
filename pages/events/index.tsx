@@ -10,6 +10,7 @@ import { GetStaticProps } from "next";
 import ContextEventsListProvider, {
 	ContextEventsListType,
 } from "@/lib/context/events-list.context";
+import HeadComp from "@/components/HeadComp";
 
 export const getStaticProps: GetStaticProps<
 	ContextEventsListType
@@ -32,11 +33,14 @@ export const getStaticProps: GetStaticProps<
 
 const Page: NextPageWithLayout<ContextEventsListType> = (props) => {
 	return (
-		<section id="events">
-			<ContextEventsListProvider {...props}>
-				<EventsList />
-			</ContextEventsListProvider>
-		</section>
+		<>
+			<HeadComp title="WhyWouldAttend - List" />
+			<section id="events">
+				<ContextEventsListProvider {...props}>
+					<EventsList />
+				</ContextEventsListProvider>
+			</section>
+		</>
 	);
 };
 

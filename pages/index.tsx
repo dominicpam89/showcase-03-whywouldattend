@@ -6,6 +6,7 @@ import { getFeaturedEvents } from "@/lib/services/firebase/events.service";
 import { GetStaticProps } from "next";
 import FeaturedEvents from "@/components/home/featured-events";
 import { FeaturedEventType } from "@/lib/definition/event.type";
+import HeadComp from "@/components/HeadComp";
 
 interface PageProps {
 	events: FeaturedEventType[];
@@ -31,10 +32,16 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 
 const Page: NextPageWithLayout<PageProps> = ({ events }) => {
 	return (
-		<section id="home">
-			<HeroSection />
-			<FeaturedEvents events={events} />
-		</section>
+		<>
+			<HeadComp
+				title="WhyWouldAttend"
+				keywords="nextjs, react, frontend, fullstack, showcase"
+			/>
+			<section id="home">
+				<HeroSection />
+				<FeaturedEvents events={events} />
+			</section>
+		</>
 	);
 };
 

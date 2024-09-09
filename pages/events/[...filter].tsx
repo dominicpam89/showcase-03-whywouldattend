@@ -11,6 +11,7 @@ import {
 import ContextEventsListProvider, {
 	ContextEventsListType,
 } from "@/lib/context/events-list.context";
+import HeadComp from "@/components/HeadComp";
 
 export const getServerSideProps: GetServerSideProps<
 	ContextEventsListType
@@ -36,11 +37,14 @@ export const getServerSideProps: GetServerSideProps<
 
 const Page: NextPageWithLayout<ContextEventsListType> = (props) => {
 	return (
-		<section id="events-with-filter">
-			<ContextEventsListProvider {...props}>
-				<EventsList />
-			</ContextEventsListProvider>
-		</section>
+		<>
+			<HeadComp title="Filtered List" />
+			<section id="events-with-filter">
+				<ContextEventsListProvider {...props}>
+					<EventsList />
+				</ContextEventsListProvider>
+			</section>
+		</>
 	);
 };
 

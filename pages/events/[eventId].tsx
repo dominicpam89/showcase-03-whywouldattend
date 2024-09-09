@@ -6,6 +6,7 @@ import NotFoundUI from "@/components/ui-awesome/not-found";
 import { getEventById } from "@/lib/services/firebase/events.service";
 import { GetServerSideProps } from "next";
 import { EventType } from "@/lib/definition/event.type";
+import HeadComp from "@/components/HeadComp";
 
 interface PageProps {
 	event: EventType | null;
@@ -32,7 +33,12 @@ const Page: NextPageWithLayout<PageProps> = ({ event }) => {
 				message="There's no event with given id"
 			/>
 		);
-	return <EventItem event={event} />;
+	return (
+		<>
+			<HeadComp title={event.title} description={event.description} />
+			<EventItem event={event} />
+		</>
+	);
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {
